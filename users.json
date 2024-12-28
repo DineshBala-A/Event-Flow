@@ -1,0 +1,20 @@
+[
+    {   
+        "username": "user",
+        "password": "scrypt:32768:8:1$aEgkk0z2q35PftsA$b59a43db4cb75d3c84b312a70c7c143f520f908a3545b96c0ca8b1520bf751fc251b39dcebdc007cf6620b6e36b991be73d1591b34b19dd9e9ab263a5034b2fc",
+        "email": "dineshbala472@gmail.com",
+        "role": "user"
+    },
+    {
+        "username": "admin",
+        "password": "scrypt:32768:8:1$aEgkk0z2q35PftsA$b59a43db4cb75d3c84b312a70c7c143f520f908a3545b96c0ca8b1520bf751fc251b39dcebdc007cf6620b6e36b991be73d1591b34b19dd9e9ab263a5034b2fc",
+        "email": "admin@example.com",
+        "role": "admin"
+    },
+    {
+        "username": "user2",
+        "password": "pbkdf2:sha256:600000$bGywSUgr7xO62iLZ$a28bb8e373a9ee0aa1cc6198f0a0af062f6926bb842c019e8c18f9a3986b21e8",
+        "email": "db@gmail.com",
+        "role": "user"
+    }
+]

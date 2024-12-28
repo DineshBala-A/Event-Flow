@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Include Tailwind CSS -->
+</head>
+<body class="bg-gray-100">
+
+    <!-- Payment Form -->
+    <div class="min-h-screen flex items-center justify-center py-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-lg">
+            <h1 class="text-3xl font-bold text-center mb-6">Enter Payment Details</h1>
+
+            <!-- Form to collect payment details -->
+            <form id="paymentForm" class="space-y-4">
+                <!-- Card Number -->
+                <div>
+                    <label for="cardNumber" class="block text-sm font-medium text-gray-700">Card Number</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="1234 5678 9101 1121">
+                </div>
+
+                <!-- Expiry Date -->
+                <div>
+                    <label for="expiryDate" class="block text-sm font-medium text-gray-700">Expiry Date (MM/YY)</label>
+                    <input type="text" id="expiryDate" name="expiryDate" required class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="12/24">
+                </div>
+
+                <!-- CVV -->
+                <div>
+                    <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="123">
+                </div>
+
+                <!-- Payment Status -->
+                <div>
+                    <label for="status" class="block text-sm font-medium text-gray-700">Payment Status</label>
+                    <select id="status" name="status" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Failed">Failed</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" class="w-full py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none">Submit Payment</button>
+                </div>
+            </form>
+
+            <!-- Success or Error Message -->
+            <div id="message" class="mt-4 text-center text-green-500"></div>
+
+            <!-- Payment Status Display -->
+            <div id="paymentStatusDisplay" class="mt-6 text-center">
+                <p class="text-lg">Last Payment Status:</p>
+                <p id="statusDisplay" class="text-xl font-bold text-indigo-600">No payment submitted yet</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-6 text-center">
+        <button onclick="window.location.href='/'" class="w-full py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none">Back to Home</button>
+    </div>
+    <script>
+        // Function to handle form submission
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page reload on form submit
+
+            // Get values from the form
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const cvv = document.getElementById('cvv').value;
+            const status = document.getElementById('status').value;
+
+            // Create a payment object
+            const payment = {
+                cardNumber: cardNumber,
+                expiryDate: expiryDate,
+                cvv: cvv,
+                status: status
+            };
+
+            // Get current payments from localStorage or create an empty array if none exist
+            const payments = JSON.parse(localStorage.getItem('payments')) || [];
+
+            // Add the new payment to the list
+            payments.push(payment);
+
+            // Save updated payment data back to localStorage
+            localStorage.setItem('payments', JSON.stringify(payments));
+
+            // Update the displayed payment status in real-time
+            document.getElementById('statusDisplay').textContent = `Status: ${status}`;
+            
+            // Display success message
+            document.getElementById('message').textContent = 'Payment information saved successfully!';
+            document.getElementById('message').classList.add('text-green-500');
+            document.getElementById('message').classList.remove('text-red-500');
+
+            // Clear the form
+            document.getElementById('paymentForm').reset();
+        });
+
+        // Optional: Load and display the last payment status when the page is loaded
+        window.addEventListener('load', function() {
+            const payments = JSON.parse(localStorage.getItem('payments')) || [];
+            if (payments.length > 0) {
+                const lastPayment = payments[payments.length - 1];
+                document.getElementById('statusDisplay').textContent = `Status: ${lastPayment.status}`;
+            }
+        });
+    </script>
+
+</body>
+</html>

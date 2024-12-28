@@ -1,0 +1,22 @@
+[
+    {
+        "event_id": 1,
+        "booking_id": 2,
+        "user_email": "db@gmail.com"
+    },
+    {
+        "event_id": 2,
+        "booking_id": 2,
+        "user_email": "dineshbala472@gmail.com"
+    },
+    {
+        "event_id": 1,
+        "booking_id": 3,
+        "user_email": "dineshbala472@gmail.com"
+    },
+    {
+        "event_id": 2,
+        "booking_id": 4,
+        "user_email": "db@gmail.com"
+    }
+]

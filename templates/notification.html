@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event </title>
+    <!-- Tailwind CSS CDN link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Tailwind Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo and Brand Name -->
+            <a class="flex items-center text-2xl font-bold text-gray-800" href="#">
+                <img src="https://i.pinimg.com/736x/4c/5f/c0/4c5fc023304e73ca079705ac33c376b8.jpg" alt="Logo" class="w-8 h-8"> <!-- Logo Image -->
+                <span class="ml-2">Event Flow</span>
+            </a>
+            <!-- Navbar Links -->
+            <div class="hidden md:flex space-x-6">
+                <a class="text-gray-700 hover:text-blue-600" href="/index">Home</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/index">Notification</a>
+                <!-- <a class="text-gray-700 hover:text-blue-600" href="/about">About</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/event">Event</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/contact">Contact</a> -->
+                <!-- Logout Button -->
+                <a class="btn btn-danger text-white py-2 px-4 bg-red-500 hover:bg-red-600 rounded-lg" href="/">Logout</a>
+            </div>
+            <!-- Navbar Toggle for Mobile -->
+            <div class="md:hidden">
+                <button id="navbar-toggle" class="text-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navbar Menu -->
+        <div id="navbarMenu" class="hidden md:hidden mt-4">
+            <div class="space-y-4 px-6">
+                <a class="text-gray-700 hover:text-blue-600" href="/index">Home</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/index">Notification</a>
+                <!-- <a class="text-gray-700 hover:text-blue-600" href="/about">About</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/event">Event</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/contact">Contact</a> -->
+                <a class="btn btn-danger text-white py-2 px-4 bg-red-500 hover:bg-red-600 rounded-lg" href='/'>Logout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- <section class="relative bg-blue-600 text-white py-16">
+        <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://i.pinimg.com/originals/95/fa/54/95fa543775583cad8944f0fafa9f7d73.gif');"></div>
+        <div class="relative container mx-auto text-center px-6">
+            <h1 class="text-4xl font-bold mb-4">Welcome to Our Site</h1>
+            <p class="text-lg mb-6">Discover our amazing products and services today.</p>
+            <a href="#shop" class="bg-yellow-500 text-white py-2 px-6 rounded-lg text-lg hover:bg-yellow-600 transition-colors">View All</a>
+        </div>
+    </section> -->
+    <div class="container mx-auto p-6 relative">
+        <div id="notification-container" class="flex flex-col items-center space-y-4 absolute top-1/4 left-1/2 transform -translate-x-1/2">
+            <!-- Notifications will be appended here -->
+        </div>
+
+    </div>
+
+   <script>
+        function addNotification(message) {
+            // Create a new notification div
+            const notification = document.createElement("div");
+            notification.classList.add("bg-white", "text-gray-800", "p-4", "rounded-lg", "shadow-lg", "w-80", "border", "border-gray-200");
+
+            // Add the notification message
+            notification.textContent = message;
+
+            // Append the notification to the container
+            document.getElementById("notification-container").appendChild(notification);
+
+            // Remove the notification after a delay (optional)
+            // setTimeout(() => {
+            //     notification.remove();
+            // }, 5000);  // Removes after 5 seconds
+        }
+
+        // let notifications = [];
+        fetch('/get_user_notifications')
+        .then(response => response.json())
+        .then(data => {
+            console.log("user_notifications",data);
+            // Handle the response data here
+            // notifications = data;
+            data.forEach(notification => {
+                addNotification(notification.text);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>

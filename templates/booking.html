@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+    <div id="bookingSection" class="min-h-screen flex items-center justify-center py-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-lg">
+            <h1 class="text-3xl font-bold text-center mb-6">Event Booking</h1>
+
+            <form id="eventBookingForm" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                    <input type="text" id="name" name="name" required class="mt-1 p-2 w-full border border-gray-300 rounded-md" placeholder="John Doe">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                    <input type="email" id="email" name="email" required class="mt-1 p-2 w-full border border-gray-300 rounded-md" placeholder="john.doe@example.com">
+                </div>
+
+                <div>
+                    <label for="ticketType" class="block text-sm font-medium text-gray-700">Ticket Type</label>
+                    <select id="ticketType" name="ticketType" required class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+                        <option value="VIP">VIP</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Economy">Economy</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="mobile" class="block text-sm font-medium text-gray-700">Your Mobile Number</label>
+                    <input type="text" id="mobile" name="mobile" required class="mt-1 p-2 w-full border border-gray-300 rounded-md" placeholder="123-456-7890">
+                </div>
+
+                <div>
+                    <button type="submit" class="w-full py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none">Book Event</button>
+                </div>
+            </form>
+
+            <div id="message" class="mt-4 text-center text-green-500"></div>
+        </div>
+    </div>
+
+    <script>
+        const bookingData = JSON.parse(localStorage.getItem('bookings')) || [];
+
+        // Handle form submission
+        document.getElementById('eventBookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const ticketType = document.getElementById('ticketType').value;
+            const mobile = document.getElementById('mobile').value;
+
+            // Validate the form data
+            if (!name || !email || !ticketType || !mobile) {
+                document.getElementById('message').textContent = 'Please fill in all fields.';
+                document.getElementById('message').classList.add('text-red-500');
+                return;
+            }
+
+            // Store data in localStorage (can replace this with backend storage)
+            bookingData.push({ name, email, ticketType, mobile });
+            localStorage.setItem('bookings', JSON.stringify(bookingData));
+
+            // Show success message
+            document.getElementById('message').textContent = 'Your booking has been successfully submitted!';
+            document.getElementById('message').classList.remove('text-red-500');
+            document.getElementById('message').classList.add('text-green-500');
+
+            // Redirect to payment page after a short delay (2 seconds)
+            setTimeout(function() {
+                window.location.href = '/payment'; // Redirect to the payment page
+            }, 2000); // 2-second delay for a better user experience
+
+            // Reset the form
+            document.getElementById('eventBookingForm').reset();
+        });
+    </script>
+
+</body>
+</html>

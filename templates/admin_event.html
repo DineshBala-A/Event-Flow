@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Tailwind CSS CDN link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+     <!-- Tailwind Navbar -->
+     <nav class="bg-white shadow-md p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo and Brand Name -->
+            <a class="flex items-center text-2xl font-bold text-gray-800" href="#">
+                <img src="https://i.pinimg.com/736x/4c/5f/c0/4c5fc023304e73ca079705ac33c376b8.jpg" alt="Logo" class="w-8 h-8"> <!-- Logo Image -->
+                <span class="ml-2">Event Flow</span>
+            </a>
+            <!-- Navbar Links -->
+            <div class="hidden md:flex space-x-6">
+                <a class="text-gray-700 hover:text-blue-600" href="/admin_index">Home</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/admin_event">Events</a>
+                <!-- <a class="text-gray-700 hover:text-blue-600" href="/admin_index">Notification</a> -->
+                <!-- <a class="text-gray-700 hover:text-blue-600" href="/about">About</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/event">Event</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/contact">Contact</a> -->
+                <!-- Logout Button -->
+                <a class="btn btn-danger text-white py-2 px-4 bg-red-500 hover:bg-red-600 rounded-lg" href="/">Logout</a>
+            </div>
+            <!-- Navbar Toggle for Mobile -->
+            <div class="md:hidden">
+                <button id="navbar-toggle" class="text-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navbar Menu -->
+        <div id="navbarMenu" class="hidden md:hidden mt-4">
+            <div class="space-y-4 px-6">
+                <a class="text-gray-700 hover:text-blue-600" href="/index">Home</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/admin_event">Events</a>
+                <!-- <a class="text-gray-700 hover:text-blue-600" href="/admin_index">Notification</a> -->
+                <!-- <a class="text-gray-700 hover:text-blue-600" href="/about">About</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/event">Event</a>
+                <a class="text-gray-700 hover:text-blue-600" href="/contact">Contact</a> -->
+                <a class="btn btn-danger text-white py-2 px-4 bg-red-500 hover:bg-red-600 rounded-lg" href='/'>Logout</a>
+            </div>
+        </div>
+    </nav>
+    
+<div class="container mx-auto p-6">
+
+    <div style="display:flex; justify-content:space-between;align-items: center;">
+        <h2 class="text-2xl font-semibold mb-6 text-center">Scheduled Events</h2>
+        <button onclick="window.location.href='/add_event_admin'" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Add Event</button>
+    </div>
+        
+
+    <!-- Container to display the products -->
+    <!-- <div  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 "> -->
+    <!-- <div  style="display:flex; flex-wrap:wrap; justify-content:center;gap: 50px;">
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" style="width: 300px; height: 150px;">
+            <h3 class="text-lg font-semibold text-gray-800 " style="text-align: center;">book events</h3>
+            <p>kfajsfkajflk jalksfja; fjasklf akfja ;sfajf kajfla; fklasdj;fa kfjsakf ja;sksfja; fasdfj;al adfjaklsfjskdfj;afjakfj</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"  style="width: 300px; height: 150px;">
+            <h3 class="text-lg font-semibold text-gray-800 " style="text-align: center;">My Events</h3>
+            <p>kfajsfkajflk jalksfja; fjasklf akfja ;sfajf kajfla; fklasdj;fa kfjsakf ja;sksfja; fasdfj;al adfjaklsfjskdfj;afjakfj</p>
+
+        </div>
+    </div> -->
+    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <!-- Product cards will be dynamically populated here -->
+    </div>
+</div>
+<!-- <section id="current-time-section" class="container mx-auto p-8">
+    <div id="current-time" class="text-lg font-semibold text-gray-800 mb-4">
+        Current date and time will be displayed here
+        <h2 class="text-2xl font-semibold mb-6 text-center">Upcoming Events</h2>
+    </div>
+</section> -->
+
+<script>
+    // Function to load products from localStorage and display them
+   
+    async function loadProducts() {
+        let products = [];
+        try {
+            // Fetch data from the server
+            const response = await fetch('/get_events');
+            
+            // Parse the JSON response
+            products = await response.json();
+
+            // Log the data to the console
+            console.log(products);
+        } catch (error) {
+            // Handle any errors that occur during the fetch
+            console.error('Error:', error);
+        }
+        console.log("products below the fetch call",products);
+
+        const container = document.getElementById('product-container');
+        container.innerHTML = ''; // Clear existing products
+
+        // Get current date and time
+        const currentDate = new Date();
+        const currentDateString = currentDate.toLocaleDateString(); // Localized date (e.g., 12/26/2024)
+        const currentTimeString = currentDate.toLocaleTimeString(); // Localized time (e.g., 3:45 PM)
+
+        // Display current date and time at the top of the product container (optional)
+        // const timeDisplay = document.getElementById('current-time');
+        // timeDisplay.innerHTML = `Page loaded on: ${currentDateString} at ${currentTimeString}`;
+
+        products.forEach((product, index) => {
+            const card = document.createElement('div');
+            card.classList.add('bg-white', 'p-4', 'rounded-lg', 'shadow-lg', 'hover:shadow-xl', 'transition-shadow', 'duration-300');
+
+            card.innerHTML = `
+                <img src="${product.image}" alt="Product Image" class="w-full h-40 object-cover rounded-lg mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">${product.title}</h3>
+                <p class="text-gray-600 text-sm mb-4">${product.description}</p>
+
+                <div class="mb-4" style="display:none;">
+                    <p class="font-bold text-gray-800 text-xs">Standard: Rs. ${product.amountStandard}</p>
+                    <p class="font-bold text-gray-800 text-xs">Premium: Rs. ${product.amountPremium}</p>
+                    <p class="font-bold text-gray-800 text-xs">Deluxe: Rs. ${product.amountDeluxe}</p>
+                </div>
+
+                <!-- Display release date and time -->
+                <div class="mb-4">
+                    <p class="font-bold text-gray-800 text-xs">Date: ${product.date}</p>
+                    <p class="font-bold text-gray-800 text-xs">Time: ${product.time}</p>
+                </div>
+
+                <!-- Action Buttons: Buy Options -->
+                <div class="mt-4 flex space-x-2" style="display:none;">
+                    <button onclick="bookEvent(${product.event_id})" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Register</button>
+                </div>
+            `;
+
+            // <button onclick="goToPayment('${product.title}', ${product.amountStandard})" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Buy Standard</button>
+            //         <button onclick="goToPayment('${product.title}', ${product.amountPremium})" class="w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600">Buy Premium</button>
+            //         <button onclick="goToPayment('${product.title}', ${product.amountDeluxe})" class="w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600">Buy Deluxe</button>
+            container.appendChild(card);
+        });
+    }
+
+    function bookEvent(event_id) {
+
+        // Send the booking data to the server
+        fetch('/book_event', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                event_id
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Function to redirect to the payment page with product and price info
+    function goToPayment(productTitle, price) {
+        window.location.href = `/booking?product=${encodeURIComponent(productTitle)}&price=${price}`;
+    }
+
+    // Call loadProducts to display the saved products when the page loads
+    loadProducts();
+
+    // Toggle the mobile navbar
+    document.getElementById('navbar-toggle').addEventListener('click', () => {
+        const menu = document.getElementById('navbarMenu');
+        menu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>
+

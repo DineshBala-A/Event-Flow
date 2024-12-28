@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Products</title>
+    <!-- Tailwind CSS CDN link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Tailwind Navbar -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo and Brand Name -->
+            <a class="flex items-center text-2xl font-bold text-gray-800" href="#">
+                <img src="https://i.pinimg.com/736x/4c/5f/c0/4c5fc023304e73ca079705ac33c376b8.jpg" alt="Logo" class="w-8 h-8"> <!-- Logo Image -->
+                <span class="ml-2">Event Flow</span>
+            </a>
+                  <!-- Navbar Links -->
+                  <div class="hidden md:flex space-x-6">
+                    <a class="text-gray-700 hover:text-blue-600" href="/index">Home</a>
+                    <a class="text-gray-700 hover:text-blue-600" href="/about">About</a>
+                    <a class="text-gray-700 hover:text-blue-600" href="/event">Event</a>
+                    <a class="text-gray-700 hover:text-blue-600" href="/contact">Contact</a>
+                    <!-- Logout Button -->
+                    <a class="btn btn-danger text-white py-2 px-4 bg-red-500 hover:bg-red-600 rounded-lg" href="/">Logout</a>
+                </div>
+                <!-- Navbar Toggle for Mobile -->
+                <div class="md:hidden">
+                    <button id="navbar-toggle" class="text-gray-800">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+    
+            <!-- Mobile Navbar Menu -->
+            <div id="navbarMenu" class="hidden md:hidden mt-4">
+                <div class="space-y-4 px-6">
+                    <a class="text-gray-700 hover:text-blue-600" href="/index">Home</a>
+                    <a class="text-gray-700 hover:text-blue-600" href="/about">About</a>
+                    <a class="text-gray-700 hover:text-blue-600" href="/event">Event</a>
+                    <a class="text-gray-700 hover:text-blue-600" href="/contact">Contact</a>
+                    <a class="btn btn-danger text-white py-2 px-4 bg-red-500 hover:bg-red-600 rounded-lg" href='/'>Logout</a>
+                </div>
+            </div>
+        </nav>
+    <section class="relative bg-blue-600 text-white py-16">
+        <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://i.pinimg.com/originals/19/97/f3/1997f3da28e8d29289097871f45b04fd.gif');"></div>
+        <div class="relative container mx-auto text-center px-6">
+            <h1 class="text-4xl font-bold mb-4">Welcome to Our Site</h1>
+            <p class="text-lg mb-6">Discover our amazing products and services today.</p>
+            <a href="#shop" class="bg-yellow-500 text-white py-2 px-6 rounded-lg text-lg hover:bg-yellow-600 transition-colors">View All</a>
+        </div>
+    </section>
+   
+    <section id="team" class="bg-gray-50 py-16">
+        <div class="container mx-auto px-6">
+            <!-- Heading -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Meet Our Team</h2>
+                <p class="text-gray-600 text-lg">Our team is made up of passionate and experienced professionals who are dedicated to helping you succeed.</p>
+            </div>
+    
+            <!-- Team Members -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://i.pinimg.com/736x/62/f1/e4/62f1e4ea079366f04e92cd9ee837b3d9.jpg" alt="Team Member" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">John Doe</h3>
+                        <p class="text-gray-600 text-sm">CEO & Founder</p>
+                        <p class="text-gray-600 mt-4">John is the visionary behind our company, bringing years of industry expertise and leadership to drive innovation.</p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-700">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-blue-400 hover:text-blue-500">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-red-600 hover:text-red-700">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://i.pinimg.com/736x/ed/63/77/ed6377f17ced24367255a8c71b899b18.jpg" alt="Team Member" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Smitha jeni</h3>
+                        <p class="text-gray-600 text-sm">Chief Marketing Officer</p>
+                        <p class="text-gray-600 mt-4">Jane leads our marketing strategy with a focus on growth, brand recognition, and customer satisfaction.</p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-700">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-blue-400 hover:text-blue-500">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-red-600 hover:text-red-700">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://i.pinimg.com/736x/96/5a/68/965a683f9969196a7072aeacaaa2139f.jpg" alt="Team Member" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Michael Lee</h3>
+                        <p class="text-gray-600 text-sm">Chief Technology Officer</p>
+                        <p class="text-gray-600 mt-4">Michael is responsible for overseeing all technology-related decisions, ensuring we remain at the forefront of innovation.</p>
+                        <div class="mt-4 flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-700">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-blue-400 hover:text-blue-500">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-red-600 hover:text-red-700">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Add more team members as needed -->
+            </div>
+        </div>
+    </section>
+    
+            
+    <section id="contact" class="bg-gray-50 py-16">
+        <div class="container mx-auto px-6">
+            <!-- Heading -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Contact Us</h2>
+                <p class="text-gray-600 text-lg">We would love to hear from you! Please reach out to us with any questions or concerns.</p>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-semibold text-gray-800">Our Contact Information</h3>
+                    <p class="text-gray-600"><strong>Phone:</strong> +123 456 7890</p>
+                    <p class="text-gray-600"><strong>Email:</strong> contact@company.com</p>
+                    <p class="text-gray-600"><strong>Address:</strong> 1234 Main Street, City, Country</p>
+    
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-gray-800">Follow Us</h3>
+                        <div class="flex space-x-4 text-gray-600">
+                            <a href="#" class="text-xl hover:text-blue-600"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-xl hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-xl hover:text-red-600"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-xl hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Send Us a Message</h3>
+                    <form action="#" method="POST" class="space-y-6">
+                        <!-- Name Field -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-800">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg mt-2" placeholder="Your Name" required>
+                        </div>
+    
+                        <!-- Email Field -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-800">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg mt-2" placeholder="Your Email" required>
+                        </div>
+    
+                        <!-- Message Field -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-800">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg mt-2" placeholder="Your Message" required></textarea>
+                        </div>
+    
+                        <!-- Submit Button -->
+                        <div class="flex justify-center">
+                            <button type="submit" class="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-6">
+            <!-- Footer Top: About, Quick Links, and Social Media -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- About Section -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">About Us</h3>
+                    <p class="text-gray-400 text-sm">
+                        We are a leading company offering innovative solutions to help businesses grow. Our mission is to provide the best products and services with the highest level of customer satisfaction.
+                    </p>
+                </div>
+    
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-yellow-400">Home</a></li>
+                        <li><a href="#about" class="hover:text-yellow-400">About</a></li>
+                        <li><a href="#services" class="hover:text-yellow-400">Services</a></li>
+                        <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
+                        <li><a href="#faq" class="hover:text-yellow-400">FAQ</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Social Media Icons -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Follow Us</h3>
+                    <div class="space-x-4">
+                        <a href="#" class="text-xl hover:text-yellow-400"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-xl hover:text-yellow-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-xl hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-xl hover:text-yellow-400"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Footer Middle: Newsletter Section -->
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-semibold mb-4">Subscribe to Our Newsletter</h3>
+                <p class="text-gray-400 text-sm mb-6">Stay updated with the latest news, offers, and updates from us.</p>
+                <form class="max-w-sm mx-auto">
+                    <div class="flex items-center space-x-2">
+                        <input type="email" class="w-full p-3 rounded-lg text-gray-900" placeholder="Enter your email">
+                        <button type="submit" class="bg-yellow-400 text-gray-800 py-3 px-6 rounded-lg hover:bg-yellow-500">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+    
+            <!-- Footer Bottom: Contact Info and Copyright -->
+            <div class="border-t border-gray-700 pt-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
+                        <p class="text-gray-400 text-sm mb-2"><strong>Phone:</strong> +123 456 7890</p>
+                        <p class="text-gray-400 text-sm mb-2"><strong>Email:</strong> info@company.com</p>
+                        <p class="text-gray-400 text-sm"><strong>Address:</strong> 1234 Business Ave, City, Country</p>
+                    </div>
+    
+                    <!-- Copyright -->
+                    <div class="text-center md:text-right">
+                        <p class="text-gray-400 text-sm">&copy; 2024 Your Company. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+</body>
+</html>

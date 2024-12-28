@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Optional custom background image */
+        body {
+            background-image: url('https://i.pinimg.com/736x/d1/ad/a6/d1ada69a11fbf5340360658a1b34a52f.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-purple-900 flex justify-center items-center min-h-screen">
+
+    <div class="w-full max-w-md bg-purple-800 p-8 rounded-xl shadow-lg opacity-90">
+        <h2 class="text-2xl text-white font-bold text-center mb-5">Log in</h2>
+        <form method="POST" action="/login" class="space-y-6">
+            <div>
+                <label for="username" class="text-white font-semibold">Username:</label>
+                <input class="w-full p-3 bg-gray-100 rounded-md" type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password" class="text-white font-semibold">Password:</label>
+                <input class="w-full p-3 bg-gray-100 rounded-md" type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="w-full py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Login</button>
+        </form>
+        <p class="text-center text-white mt-4">
+            Don't have an account? <a href="/register" class="text-indigo-400">Register here</a>
+        </p>
+    </div>
+
+</body>
+</html>

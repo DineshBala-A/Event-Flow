@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bookings</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+    <div id="viewBookingSection" class="min-h-screen py-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold text-center mb-6">Booking List</h1>
+
+            <!-- Table to display booking data -->
+            <table id="bookingTable" class="min-w-full table-auto border-collapse">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="px-4 py-2 border text-left">Name</th>
+                        <th class="px-4 py-2 border text-left">Email</th>
+                        <th class="px-4 py-2 border text-left">Ticket Type</th>
+                        <th class="px-4 py-2 border text-left">Mobile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Sample booking data (can be dynamically loaded from a server)
+        const bookings = [
+            { name: 'John Doe', email: 'john.doe@example.com', ticketType: 'VIP', mobile: '123-456-7890' },
+            { name: 'Jane Smith', email: 'jane.smith@example.com', ticketType: 'Regular', mobile: '987-654-3210' },
+            { name: 'Mark Johnson', email: 'mark.johnson@example.com', ticketType: 'Economy', mobile: '555-123-4567' }
+        ];
+
+        // Function to populate the table with booking data
+        function populateBookingTable(bookings) {
+            const tableBody = document.querySelector("#bookingTable tbody");
+            tableBody.innerHTML = "";  // Clear existing table rows
+
+            bookings.forEach(booking => {
+                // Create a new row for each booking
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td class="px-4 py-2 border">${booking.name}</td>
+                    <td class="px-4 py-2 border">${booking.email}</td>
+                    <td class="px-4 py-2 border">${booking.ticketType}</td>
+                    <td class="px-4 py-2 border">${booking.mobile}</td>
+                `;
+
+                // Append the new row to the table
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Call the function to populate the table
+        populateBookingTable(bookings);
+    </script>
+
+</body>
+</html>
